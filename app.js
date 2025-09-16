@@ -1,6 +1,5 @@
 //atividade 2 
 
-const { notEqual } = require('assert');
 const express = require('express'); 
 const app = express();
 const PORT = 8081;
