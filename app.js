@@ -12,6 +12,7 @@ app.post(`/usuarios/`, (req, res ) => { // Rota para adicionar usuários
         const {nome, email, senha} = req.body;
 
 
+        
      if (nome.length < 3) { //regras de validação
         return res.status(400).json({error: "Nome é obrigatório e deve ter pelo menos 3 caracteres."});
      }
