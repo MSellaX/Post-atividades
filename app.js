@@ -9,44 +9,13 @@ app.use(express.json());
 
 app.post(`/usuarios/`, (req, res ) => { // Rota para adicionar usuários
     try {
-        const {nome, email, senha} = req.body;
+        const {nome, nota, situacao} = req.body; //extrai nome e idade do corpo da requisição
+        if (nome == "" || nota == "") {
+            return res.status(400).send("Nome e nota são obrigatórios");
+        }
 
-
-     if (nome.length < 3) { //regras de validação
-        return res.status(400).json({error: "Nome é obrigatório e deve ter pelo menos 3 caracteres."});
-     }
-
-
-     if (!email.includes('@')) { //regras de validação
-        return res.status(400).json({error: "Email é obrigatório e deve ser válido."});
-     }
-
-
-        if (senha.length < 4) {  //regras de validação
-        return res.status(400).json({error: "Senha é obrigatória e deve ter pelo menos 4 caracteres."});
-     }
-
-
-    let usuarios = [];
-if (fs.existsSync('usuarios.json')) { //verifica se o arquivo existe
-    const data = fs.readFileSync('usuarios.json', 'utf-8');
-    usuarios = JSON.parse(data);
-
-
-} else {
-    usuarios = [];
-}
-
-
-    const usuarioCriado = {nome, email, senha}; //cria o objeto do usuário
-    usuarios.push(usuarioCriado);
-
-
-fs.writeFileSync('usuarios.json', JSON.stringify(usuarios, null, 2));//escreve no arquivo
-
-
-    res.status(201).json(usuarioCriado);
-
+        const = situacao = nota
+        situacao = nota >= 6 ? "Aprovado" : "Reprovado"; 
 
     } catch (error) { //tratamento de erro
         console.error("Erro ao processar a requisição:", error);
