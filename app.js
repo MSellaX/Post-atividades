@@ -1,4 +1,4 @@
-//atividade 2 
+//atividade 3
 
 const { notEqual } = require('assert');
 const express = require('express'); 
@@ -8,19 +8,19 @@ const fs = require('fs');
 
 app.use(express.json());
 
-app.post(`/medias`, (req, res ) => { // Rota para adicionar usuários
+
+app.post(`/soma`, (req, res ) => { // Rota para adicionar usuários
     try {
-        const {nome, notas} = req.body; //extrai nome e notas do corpo da requisição
+        const {} = req.body; //extrai numeros do corpo da requisição
         if (!nome || !notas || notas.length === 0) {
             return res.status(400).send("Nome e notas são obrigatórios");
         }
 
-        const soma = notas.reduce((valorAcumulado, nota) => valorAcumulado + nota);
-        const media = soma / notas.length;
-        const situacao = media >= 6 ? "Aprovado" : "Reprovado";
+        const soma = somaFinal.reduce((valorAcumulado, nota) => valorAcumulado + nota);
+        const media = soma ;
 
-        const mediaFinal = { nome, notas, soma, media, situacao };
-        isNaN(mediaFinal.media) ? res.status(400).send("Erro: Notas inválidas"):
+        const somaFinal = {numeros};
+        isNaN(somaFinal) ? res.status(400).send("Erro: algum valor não é um número"):
         res.status(200).json(mediaFinal);
 
         let medias = []; //array para armazenar as médias
