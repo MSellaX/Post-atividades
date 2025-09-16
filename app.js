@@ -12,7 +12,7 @@ app.use(express.json());
 app.post(`/soma`, (req, res ) => { // Rota para adicionar usuários
     try {
         const {} = req.body; //extrai numeros do corpo da requisição
-        if (!nome || !notas || notas.length === 0) {
+        if (!numeros) {
             return res.status(400).send("Nome e notas são obrigatórios");
         }
 
