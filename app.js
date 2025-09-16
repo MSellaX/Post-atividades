@@ -12,11 +12,12 @@ app.post(`/soma`, (req, res ) => { // Rota para adicionar usuários
     try {
         const {numeros} = req.body; //extrai numeros do corpo da requisição
         console.log(numeros);
-        const soma = numeros.reduce((valorAcumulado, atual) => valorAcumulado + atual, 0);
-       
-        if(Number, isNaN(numeros)){
+        // Verificar se todos os elementos são números
+        if (numeros.some(num => isNaN(Number(num)))) {
             return res.status(400).send("coloque apenas numeros ");
         }
+
+        const soma = numeros.reduce((valorAcumulado, atual) => valorAcumulado + atual, 0);
         res.status(200).json({resultado: soma});
 
     } catch (error) { //tratamento de erro
